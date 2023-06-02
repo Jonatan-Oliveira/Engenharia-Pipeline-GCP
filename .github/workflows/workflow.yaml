@@ -1,0 +1,66 @@
+name: 'Terraform CI'
+
+# **What it does**: Renders the content of every page and check all internal links.
+# **Why we have it**: To make sure all links connect correctly.
+# **Who does it impact**: Docs content.
+
+on:
+  # workflow_dispatch:
+  push:
+    branches:
+      - main
+      paths:
+        - '**.tf'
+  pull_request:
+
+# permissions:
+#   contents: read
+#   # Needed for the 'trilom/file-changes-action' action
+#   pull-requests: read
+
+# # This allows a subsequently queued workflow run to interrupt previous runs
+# concurrency:
+#   group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+#   cancel-in-progress: true
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        
+        
+      #   with:
+      #     node-version: 16.13.x
+      #     cache: npm
+
+      # - name: Install
+      #   run: npm ci
+
+      - name: Terraform Init
+        uses: terraform init
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      - name: Terraform Plan
+        uses: terraform plan -lock=false
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
+        
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: terraform apply -auto-approve
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}        
+
+     
