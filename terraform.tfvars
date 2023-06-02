@@ -1,2 +1,2 @@
-project_id = "eng-pipeline-gcp-104358"
+project_id = "engenharia-pipeline-gcp"
 region = "us-central1"
