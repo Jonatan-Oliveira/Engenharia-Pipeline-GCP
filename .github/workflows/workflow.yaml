@@ -11,6 +11,7 @@ on:
     - main
     paths:
       - '**.tf'
+      - '**.tfvars'
   pull_request:
 
 # permissions:
@@ -48,12 +49,12 @@ jobs:
       #   run: npm ci
 
       - name: Terraform Init
-        uses: terraform init
+        run: terraform init
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
       - name: Terraform Plan
-        uses: terraform plan -lock=false
+        run: terraform plan -lock=false
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
         
