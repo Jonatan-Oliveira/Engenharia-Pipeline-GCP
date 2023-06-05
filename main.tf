@@ -1,10 +1,4 @@
-# resource "google_storage_bucket" "gcs_bucket" {
-  # name     = "bucket-eng-pipeline-gcp-9114"
-  # location = var.region
-# }
-
-
-module "bigquery-dataset-gasolina1" {
+module "bigquery-dataset-gasolina" {
   source  = "./modules/bigquery"
   dataset_id                  = "gasolina_brasil"
   dataset_name                = "gasolina_brasil"
