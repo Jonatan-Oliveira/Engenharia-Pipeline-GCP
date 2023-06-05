@@ -1,4 +1,4 @@
-module "bigquery-dataset-gasolina" {
+module "bigquery-dataset-gasolina1" {
   source  = "./modules/bigquery"
   dataset_id                  = "gasolina_brasil"
   dataset_name                = "gasolina_brasil"
