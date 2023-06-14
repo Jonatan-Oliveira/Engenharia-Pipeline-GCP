@@ -1,4 +1,4 @@
-module "bigquery-dataset-gasolina1" {
+module "bigquery-dataset-gasolina-jp" {
   source  = "./modules/bigquery"
   dataset_id                  = "gasolina_brasil"
   dataset_name                = "gasolina_brasil"
@@ -47,7 +47,7 @@ module "bigquery-dataset-gasolina1" {
 module "bucket-raw" {
   source  = "./modules/gcs"
 
-  name       = "data-pipeline-combustiveis-brasil-raw1"
+  name       = "data-pipeline-combustiveis-brasil-raw-jp"
   project_id = var.project_id
   location   = var.region
 }
@@ -55,12 +55,12 @@ module "bucket-raw" {
 module "bucket-curated" {
   source  = "./modules/gcs"
 
-  name       = "data-pipeline-combustiveis-brasil-curated2"
+  name       = "data-pipeline-combustiveis-brasil-curated-jp"
   project_id = var.project_id
   location   = var.region
 }
 
-module "bucket-pyspark3-tmp" {
+module "bucket-pyspark-tmp" {
   source  = "./modules/gcs"
 
   name       = "data-pipeline-combustiveis-brasil-pyspark-tmp"
@@ -68,7 +68,7 @@ module "bucket-pyspark3-tmp" {
   location   = var.region
 }
 
-module "bucket-pyspark4-code" {
+module "bucket-pyspark-code" {
   source  = "./modules/gcs"
 
   name       = "data-pipeline-combustiveis-brasil-pyspark-code"
