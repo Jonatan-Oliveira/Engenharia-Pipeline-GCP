@@ -23,7 +23,7 @@ module "bigquery-dataset-jp-gasolina" {
   ]
   tables=[
     {
-        table_id           = "tb_historico_combustivel_brasil",
+        table_id           = "tb_historico_combustivel_brasill",
         description        = "Tabela com as informacoes de preço do combustível ao longo dos anos"
         time_partitioning  = {
           type                     = "DAY",
@@ -39,7 +39,7 @@ module "bigquery-dataset-jp-gasolina" {
           project  = "gasolina"
         },
         deletion_protection = true
-        schema = file("./bigquery/schema/gasolina_brasil/tb_historico_combustivel_brasil.json")
+        schema = file("./bigquery/schema/gasolina_brasil/tb_historico_combustivel_brasill.json")
     }
   ]
 }
