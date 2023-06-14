@@ -69,7 +69,7 @@ module "bucket-pyspark-tmp" {
 }
 
 module "bucket-pyspark-code" {
-  source  = "./modules/gcs"
+  source = "./modules/gcs"
 
   name       = "data-pipeline-jp-combustiveis-brasil-pyspark-code"
   project_id = var.project_id
