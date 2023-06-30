@@ -56,6 +56,7 @@ async def download_combustivel(params: Params):
 
 
 if __name__ == "__main__":
-    # uvicorn.run(app, host="0.0.0.0", port=8080)
-    #MUDEI A PORTA 8080 PARA 8000 POR QUE UTILIZO OUTRO SERVIÇO NELA
-    uvicorn.run(app, host="127.0.0.1", port=8080)
+    # PARA USAR NA CLOUD USAR CONEXÃO ABAIXO
+    uvicorn.run(app, host="0.0.0.0", port=8080)
+    # PARA testar Local(na maquina) Usar conexão abaixo
+    # uvicorn.run(app, host="127.0.0.1", port=8080)
